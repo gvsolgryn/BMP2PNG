@@ -38,11 +38,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.fileCountLabelRight = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.convertBtn = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.logTextBox = new System.Windows.Forms.RichTextBox();
-            this.fileCountLabel = new System.Windows.Forms.Label();
+            this.fileCountLabelLeft = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -150,11 +152,13 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.fileCountLabelRight);
+            this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cancelBtn);
             this.groupBox3.Controls.Add(this.convertBtn);
             this.groupBox3.Controls.Add(this.progressBar);
             this.groupBox3.Controls.Add(this.logTextBox);
-            this.groupBox3.Controls.Add(this.fileCountLabel);
+            this.groupBox3.Controls.Add(this.fileCountLabelLeft);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(350, 131);
             this.groupBox3.Name = "groupBox3";
@@ -162,6 +166,28 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Progress";
+            // 
+            // fileCountLabelRight
+            // 
+            this.fileCountLabelRight.AutoSize = true;
+            this.fileCountLabelRight.Location = new System.Drawing.Point(110, 24);
+            this.fileCountLabelRight.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.fileCountLabelRight.Name = "fileCountLabelRight";
+            this.fileCountLabelRight.Size = new System.Drawing.Size(14, 15);
+            this.fileCountLabelRight.TabIndex = 8;
+            this.fileCountLabelRight.Text = "0";
+            this.fileCountLabelRight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(95, 24);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(12, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "/";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cancelBtn
             // 
@@ -180,6 +206,7 @@
             this.convertBtn.TabIndex = 5;
             this.convertBtn.Text = "Convert";
             this.convertBtn.UseVisualStyleBackColor = true;
+            this.convertBtn.Click += new System.EventHandler(this.ConvertBtn_Click);
             // 
             // progressBar
             // 
@@ -200,16 +227,16 @@
             this.logTextBox.TabIndex = 3;
             this.logTextBox.Text = "";
             // 
-            // fileCountLabel
+            // fileCountLabelLeft
             // 
-            this.fileCountLabel.AutoSize = true;
-            this.fileCountLabel.Location = new System.Drawing.Point(78, 24);
-            this.fileCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.fileCountLabel.Name = "fileCountLabel";
-            this.fileCountLabel.Size = new System.Drawing.Size(26, 15);
-            this.fileCountLabel.TabIndex = 1;
-            this.fileCountLabel.Text = "0/0";
-            this.fileCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.fileCountLabelLeft.AutoSize = true;
+            this.fileCountLabelLeft.Location = new System.Drawing.Point(78, 24);
+            this.fileCountLabelLeft.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.fileCountLabelLeft.Name = "fileCountLabelLeft";
+            this.fileCountLabelLeft.Size = new System.Drawing.Size(14, 15);
+            this.fileCountLabelLeft.TabIndex = 1;
+            this.fileCountLabelLeft.Text = "0";
+            this.fileCountLabelLeft.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -225,10 +252,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 352);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "BMP2PNG";
             this.groupBox1.ResumeLayout(false);
@@ -254,10 +284,12 @@
         private PictureBox pictureBox;
         private GroupBox groupBox3;
         private Label label3;
-        private Label fileCountLabel;
+        private Label fileCountLabelLeft;
         private ProgressBar progressBar;
         private RichTextBox logTextBox;
         private Button cancelBtn;
         private Button convertBtn;
+        private Label fileCountLabelRight;
+        private Label label4;
     }
 }
