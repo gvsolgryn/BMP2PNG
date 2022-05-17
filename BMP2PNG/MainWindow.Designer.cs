@@ -30,7 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.optBtn = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.outputDirTextbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.srcBtn = new System.Windows.Forms.Button();
             this.sourceDirTextbox = new System.Windows.Forms.TextBox();
@@ -38,12 +38,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.convertBtn = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.fileCountLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.logTextBox = new System.Windows.Forms.RichTextBox();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.convertBtn = new System.Windows.Forms.Button();
-            this.cancelBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -53,7 +53,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.optBtn);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.outputDirTextbox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.srcBtn);
             this.groupBox1.Controls.Add(this.sourceDirTextbox);
@@ -74,19 +74,19 @@
             this.optBtn.TabIndex = 5;
             this.optBtn.Text = "...";
             this.optBtn.UseVisualStyleBackColor = true;
-            this.optBtn.Click += new System.EventHandler(this.optBtn_Click);
+            this.optBtn.Click += new System.EventHandler(this.OptBtn_Click);
             // 
-            // textBox2
+            // outputDirTextbox
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(129, 72);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(602, 23);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TabStop = false;
+            this.outputDirTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.outputDirTextbox.Cursor = System.Windows.Forms.Cursors.No;
+            this.outputDirTextbox.Enabled = false;
+            this.outputDirTextbox.Location = new System.Drawing.Point(129, 72);
+            this.outputDirTextbox.Name = "outputDirTextbox";
+            this.outputDirTextbox.ReadOnly = true;
+            this.outputDirTextbox.Size = new System.Drawing.Size(602, 23);
+            this.outputDirTextbox.TabIndex = 4;
+            this.outputDirTextbox.TabStop = false;
             // 
             // label2
             // 
@@ -106,7 +106,7 @@
             this.srcBtn.TabIndex = 2;
             this.srcBtn.Text = "...";
             this.srcBtn.UseVisualStyleBackColor = true;
-            this.srcBtn.Click += new System.EventHandler(this.scrBtn_Click);
+            this.srcBtn.Click += new System.EventHandler(this.ScrBtn_Click);
             // 
             // sourceDirTextbox
             // 
@@ -163,6 +163,43 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Progress";
             // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Location = new System.Drawing.Point(357, 179);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.TabIndex = 6;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            // 
+            // convertBtn
+            // 
+            this.convertBtn.Location = new System.Drawing.Point(276, 179);
+            this.convertBtn.Name = "convertBtn";
+            this.convertBtn.Size = new System.Drawing.Size(75, 23);
+            this.convertBtn.TabIndex = 5;
+            this.convertBtn.Text = "Convert";
+            this.convertBtn.UseVisualStyleBackColor = true;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(6, 149);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(424, 23);
+            this.progressBar.TabIndex = 4;
+            // 
+            // logTextBox
+            // 
+            this.logTextBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.logTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.logTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.logTextBox.Location = new System.Drawing.Point(6, 47);
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.ReadOnly = true;
+            this.logTextBox.Size = new System.Drawing.Size(426, 96);
+            this.logTextBox.TabIndex = 3;
+            this.logTextBox.Text = "";
+            // 
             // fileCountLabel
             // 
             this.fileCountLabel.AutoSize = true;
@@ -183,43 +220,6 @@
             this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "bmp Files :";
-            // 
-            // logTextBox
-            // 
-            this.logTextBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.logTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.logTextBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.logTextBox.Location = new System.Drawing.Point(6, 47);
-            this.logTextBox.Name = "logTextBox";
-            this.logTextBox.ReadOnly = true;
-            this.logTextBox.Size = new System.Drawing.Size(426, 96);
-            this.logTextBox.TabIndex = 3;
-            this.logTextBox.Text = "";
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(6, 149);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(424, 23);
-            this.progressBar.TabIndex = 4;
-            // 
-            // convertBtn
-            // 
-            this.convertBtn.Location = new System.Drawing.Point(276, 179);
-            this.convertBtn.Name = "convertBtn";
-            this.convertBtn.Size = new System.Drawing.Size(75, 23);
-            this.convertBtn.TabIndex = 5;
-            this.convertBtn.Text = "Convert";
-            this.convertBtn.UseVisualStyleBackColor = true;
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Location = new System.Drawing.Point(357, 179);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 6;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -245,7 +245,7 @@
 
         private GroupBox groupBox1;
         private Button optBtn;
-        private TextBox textBox2;
+        private TextBox outputDirTextbox;
         private Label label2;
         private Button srcBtn;
         private TextBox sourceDirTextbox;

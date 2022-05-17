@@ -11,7 +11,7 @@ namespace BMP2PNG
         private string srcPath = string.Empty;
         private string optPath = string.Empty;
 
-        private void scrBtn_Click(object sender, EventArgs e)
+        private void ScrBtn_Click(object sender, EventArgs e)
         {
             var folderDialog = new FolderBrowserDialog();
             var dialogResult = folderDialog.ShowDialog();
@@ -23,7 +23,7 @@ namespace BMP2PNG
             }
         }
 
-        private void optBtn_Click(object sender, EventArgs e)
+        private void OptBtn_Click(object sender, EventArgs e)
         {
             var folderDialog = new FolderBrowserDialog();
             var dialogResult = folderDialog.ShowDialog();
@@ -31,8 +31,13 @@ namespace BMP2PNG
             if (dialogResult == DialogResult.OK)
             {
                 optPath = folderDialog.SelectedPath;
-                sourceDirTextbox.Text = folderDialog.SelectedPath;
+                outputDirTextbox.Text = folderDialog.SelectedPath;
             }
+        }
+
+        private void ConvertBmp2PNG()
+        {
+
         }
     }
 }
