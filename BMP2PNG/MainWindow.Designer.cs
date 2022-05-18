@@ -40,7 +40,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.fileCountLabelRight = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cancelBtn = new System.Windows.Forms.Button();
             this.convertBtn = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.logTextBox = new System.Windows.Forms.RichTextBox();
@@ -155,7 +154,6 @@
             // 
             this.groupBox3.Controls.Add(this.fileCountLabelRight);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.cancelBtn);
             this.groupBox3.Controls.Add(this.convertBtn);
             this.groupBox3.Controls.Add(this.progressBar);
             this.groupBox3.Controls.Add(this.logTextBox);
@@ -190,18 +188,9 @@
             this.label4.Text = "/";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Location = new System.Drawing.Point(357, 179);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 6;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            // 
             // convertBtn
             // 
-            this.convertBtn.Location = new System.Drawing.Point(276, 179);
+            this.convertBtn.Location = new System.Drawing.Point(355, 179);
             this.convertBtn.Name = "convertBtn";
             this.convertBtn.Size = new System.Drawing.Size(75, 23);
             this.convertBtn.TabIndex = 5;
@@ -211,7 +200,7 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(6, 149);
+            this.progressBar.Location = new System.Drawing.Point(6, 150);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(424, 23);
             this.progressBar.TabIndex = 4;
@@ -288,7 +277,6 @@
         private Label fileCountLabelLeft;
         private ProgressBar progressBar;
         private RichTextBox logTextBox;
-        private Button cancelBtn;
         private Button convertBtn;
         private Label fileCountLabelRight;
         private Label label4;

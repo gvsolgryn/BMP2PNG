@@ -7,12 +7,15 @@ namespace BMP2PNG
         public MainWindow()
         {
             InitializeComponent();
+            this.progressBar.Step = 1;
         }
 
         private string SrcPath = string.Empty;
         private string OptPath = string.Empty;
         private string[] BmpArray = { };
         private List<string> FileNameList = new List<string>();
+
+        Thread t1;
 
         private void ScrBtn_Click(object sender, EventArgs e)
         {
@@ -35,7 +38,8 @@ namespace BMP2PNG
                     FileNameList.Add(file.Name);
                 }
 
-                this.fileCountLabelRight.Text = BmpArray.Length.ToString();
+                fileCountLabelRight.Text = BmpArray.Length.ToString();
+                progressBar.Maximum = BmpArray.Length;
             }
         }
 
@@ -53,7 +57,8 @@ namespace BMP2PNG
 
         private void ConvertBtn_Click(object sender, EventArgs e)
         {
-            ConvertBmp2Png();
+            t1 = new Thread(new ThreadStart(ConvertBmp2Png));
+            t1.Start();
         }
 
         private void ConvertBmp2Png()
@@ -88,15 +93,62 @@ namespace BMP2PNG
             {
                 var bmp = new Bitmap(bmpFileDir);
 
-                pictureBox.Image = bmp;
-
-                Update();
-
-                bmp.Save(OptPath + "\\" + FileNameList[index].Replace("bmp", "png"), ImageFormat.Png);
+                if (pictureBox.InvokeRequired)
+                {
+                    Invoke((MethodInvoker)delegate ()
+                    {
+                        pictureBox.Image = bmp;
+                        bmp.Save(OptPath + "\\" + FileNameList[index].Replace("bmp", "png"), ImageFormat.Png);
+                    });
+                }
+                else
+                {
+                    pictureBox.Image = bmp;
+                    bmp.Save(OptPath + "\\" + FileNameList[index].Replace("bmp", "png"), ImageFormat.Png);
+                }
 
                 Thread.Sleep(100);
 
+                LogAppend($"{index + 1}번째 파일 변환 완료\n");
+
                 index++;
+
+                if (fileCountLabelLeft.InvokeRequired)
+                {
+                    Invoke((MethodInvoker)delegate ()
+                    {
+                        fileCountLabelLeft.Text = index.ToString();
+                    });
+                }
+                else
+                {
+                    fileCountLabelLeft.Text = index.ToString();
+                }
+
+                if (progressBar.InvokeRequired)
+                {
+                    Invoke((MethodInvoker)delegate ()
+                    {
+                        progressBar.PerformStep();
+                    });
+                }
+            }
+        }
+
+        private void LogAppend(string txt)
+        {
+            if (logTextBox.InvokeRequired)
+            {
+                Invoke((MethodInvoker)delegate
+                {
+                    logTextBox.AppendText(txt);
+                    logTextBox.ScrollToCaret();
+                });
+            }
+            else
+            {
+                logTextBox.AppendText(txt);
+                logTextBox.ScrollToCaret();
             }
         }
     }
