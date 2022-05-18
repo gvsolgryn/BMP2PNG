@@ -45,10 +45,17 @@
             this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.fileCountLabelLeft = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.bMP2PNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.프로그램종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.utilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uYUV422ToPNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uYUV422ToPNGToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -59,7 +66,7 @@
             this.groupBox1.Controls.Add(this.srcBtn);
             this.groupBox1.Controls.Add(this.sourceDirTextbox);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.groupBox1.Size = new System.Drawing.Size(776, 113);
@@ -134,7 +141,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.pictureBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 131);
+            this.groupBox2.Location = new System.Drawing.Point(12, 146);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(332, 208);
             this.groupBox2.TabIndex = 1;
@@ -159,7 +166,7 @@
             this.groupBox3.Controls.Add(this.logTextBox);
             this.groupBox3.Controls.Add(this.fileCountLabelLeft);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(350, 131);
+            this.groupBox3.Location = new System.Drawing.Point(350, 146);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(438, 208);
             this.groupBox3.TabIndex = 2;
@@ -238,16 +245,67 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "bmp Files :";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bMP2PNGToolStripMenuItem,
+            this.utilToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // bMP2PNGToolStripMenuItem
+            // 
+            this.bMP2PNGToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.프로그램종료ToolStripMenuItem});
+            this.bMP2PNGToolStripMenuItem.Name = "bMP2PNGToolStripMenuItem";
+            this.bMP2PNGToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.bMP2PNGToolStripMenuItem.Text = "BMP2PNG";
+            // 
+            // 프로그램종료ToolStripMenuItem
+            // 
+            this.프로그램종료ToolStripMenuItem.Name = "프로그램종료ToolStripMenuItem";
+            this.프로그램종료ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.프로그램종료ToolStripMenuItem.Text = "프로그램 종료";
+            // 
+            // utilToolStripMenuItem
+            // 
+            this.utilToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uYUV422ToPNGToolStripMenuItem});
+            this.utilToolStripMenuItem.Name = "utilToolStripMenuItem";
+            this.utilToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.utilToolStripMenuItem.Text = "Util";
+            // 
+            // uYUV422ToPNGToolStripMenuItem
+            // 
+            this.uYUV422ToPNGToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uYUV422ToPNGToolStripMenuItem1});
+            this.uYUV422ToPNGToolStripMenuItem.Name = "uYUV422ToPNGToolStripMenuItem";
+            this.uYUV422ToPNGToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uYUV422ToPNGToolStripMenuItem.Text = "YUV to PNG";
+            // 
+            // uYUV422ToPNGToolStripMenuItem1
+            // 
+            this.uYUV422ToPNGToolStripMenuItem1.Name = "uYUV422ToPNGToolStripMenuItem1";
+            this.uYUV422ToPNGToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.uYUV422ToPNGToolStripMenuItem1.Text = "UYUV4:2:2 to PNG";
+            this.uYUV422ToPNGToolStripMenuItem1.Click += new System.EventHandler(this.uYUV422ToPNGToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(800, 352);
+            this.ClientSize = new System.Drawing.Size(800, 366);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "BMP2PNG";
@@ -257,7 +315,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -280,5 +341,11 @@
         private Button convertBtn;
         private Label fileCountLabelRight;
         private Label label4;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem bMP2PNGToolStripMenuItem;
+        private ToolStripMenuItem utilToolStripMenuItem;
+        private ToolStripMenuItem 프로그램종료ToolStripMenuItem;
+        private ToolStripMenuItem uYUV422ToPNGToolStripMenuItem;
+        private ToolStripMenuItem uYUV422ToPNGToolStripMenuItem1;
     }
 }

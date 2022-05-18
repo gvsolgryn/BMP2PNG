@@ -151,5 +151,11 @@ namespace BMP2PNG
                 logTextBox.ScrollToCaret();
             }
         }
+
+        private void uYUV422ToPNGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var uyuv422ToPngForm = new UYUV422toPNG();
+            uyuv422ToPngForm.ShowDialog();
+        }
     }
 }
