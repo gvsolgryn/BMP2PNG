@@ -12,11 +12,15 @@ namespace BMP2PNG
         private string SrcPath = string.Empty;
         private string OptPath = string.Empty;
         private string[] BmpArray = { };
+        private List<string> FileNameList = new List<string>();
 
         private void ScrBtn_Click(object sender, EventArgs e)
         {
             var folderDialog = new FolderBrowserDialog();
             var dialogResult = folderDialog.ShowDialog();
+
+            BmpArray = Array.Empty<string>();
+            FileNameList.Clear();
 
             if (dialogResult == DialogResult.OK)
             {
@@ -24,6 +28,12 @@ namespace BMP2PNG
                 sourceDirTextbox.Text = folderDialog.SelectedPath;
 
                 BmpArray = Directory.GetFiles(SrcPath, "*.bmp", SearchOption.TopDirectoryOnly);
+                var directoryInfo = new DirectoryInfo(SrcPath);
+                
+                foreach (var file in directoryInfo.GetFiles("*.bmp"))
+                {
+                    FileNameList.Add(file.Name);
+                }
 
                 this.fileCountLabelRight.Text = BmpArray.Length.ToString();
             }
@@ -48,6 +58,8 @@ namespace BMP2PNG
 
         private void ConvertBmp2Png()
         {
+            int index = 0;
+
             if (string.IsNullOrEmpty(SrcPath))
             {
                 MessageBox.Show("bmp 폴더를 선택해주십시오.");
@@ -62,22 +74,29 @@ namespace BMP2PNG
                 return;
             }
 
-            foreach (var bmpFile in BmpArray)
+            if (SrcPath == OptPath)
             {
-                var count = 1;
+                var result = MessageBox.Show("bmp 폴더와 변환 폴더가 같습니다. 계속 하시겠습니까?", "주의!", MessageBoxButtons.YesNo);
 
-                var bmp = new Bitmap(bmpFile);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            foreach (var bmpFileDir in BmpArray)
+            {
+                var bmp = new Bitmap(bmpFileDir);
 
                 pictureBox.Image = bmp;
 
                 Update();
 
-                Debug.WriteLine(OptPath + count);
-                //bmp.Save((OptPath + "\" + count), ImageFormat.Png);
+                bmp.Save(OptPath + "\\" + FileNameList[index].Replace("bmp", "png"), ImageFormat.Png);
 
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
 
-                count++;
+                index++;
             }
         }
     }
