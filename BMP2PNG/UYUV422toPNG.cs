@@ -38,7 +38,7 @@ namespace BMP2PNG
                 UYUV422PathArray = Directory.GetFiles(SrcPath, "*.yuv", SearchOption.TopDirectoryOnly);
                 var directoryInfo = new DirectoryInfo(SrcPath);
 
-                foreach (var file in directoryInfo.GetFiles("*.bmp"))
+                foreach (var file in directoryInfo.GetFiles("*.yuv"))
                 {
                     UYUV422FileNameList.Add(file.Name);
                 }
