@@ -45,6 +45,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ffmpegSelectBtn = new System.Windows.Forms.Button();
+            this.ffmpegSelectTextbox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -60,7 +63,7 @@
             this.groupBox3.Controls.Add(this.logTextBox);
             this.groupBox3.Controls.Add(this.fileCountLabelLeft);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(350, 131);
+            this.groupBox3.Location = new System.Drawing.Point(350, 207);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(438, 208);
             this.groupBox3.TabIndex = 6;
@@ -97,6 +100,7 @@
             this.convertBtn.TabIndex = 5;
             this.convertBtn.Text = "Convert";
             this.convertBtn.UseVisualStyleBackColor = true;
+            this.convertBtn.Click += new System.EventHandler(this.ConvertBtn_Click);
             // 
             // progressBar
             // 
@@ -150,6 +154,7 @@
             // srcBtn
             // 
             this.srcBtn.Location = new System.Drawing.Point(737, 30);
+            this.srcBtn.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.srcBtn.Name = "srcBtn";
             this.srcBtn.Size = new System.Drawing.Size(31, 23);
             this.srcBtn.TabIndex = 2;
@@ -163,6 +168,7 @@
             this.sourceDirTextbox.Cursor = System.Windows.Forms.Cursors.No;
             this.sourceDirTextbox.Enabled = false;
             this.sourceDirTextbox.Location = new System.Drawing.Point(129, 29);
+            this.sourceDirTextbox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.sourceDirTextbox.Name = "sourceDirTextbox";
             this.sourceDirTextbox.ReadOnly = true;
             this.sourceDirTextbox.Size = new System.Drawing.Size(602, 23);
@@ -172,7 +178,7 @@
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(8, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 23);
             this.label1.TabIndex = 0;
@@ -181,7 +187,8 @@
             // 
             // optBtn
             // 
-            this.optBtn.Location = new System.Drawing.Point(737, 73);
+            this.optBtn.Location = new System.Drawing.Point(737, 71);
+            this.optBtn.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.optBtn.Name = "optBtn";
             this.optBtn.Size = new System.Drawing.Size(31, 23);
             this.optBtn.TabIndex = 5;
@@ -194,7 +201,8 @@
             this.outputDirTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.outputDirTextbox.Cursor = System.Windows.Forms.Cursors.No;
             this.outputDirTextbox.Enabled = false;
-            this.outputDirTextbox.Location = new System.Drawing.Point(129, 72);
+            this.outputDirTextbox.Location = new System.Drawing.Point(129, 70);
+            this.outputDirTextbox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.outputDirTextbox.Name = "outputDirTextbox";
             this.outputDirTextbox.ReadOnly = true;
             this.outputDirTextbox.Size = new System.Drawing.Size(602, 23);
@@ -203,8 +211,8 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 73);
-            this.label2.Margin = new System.Windows.Forms.Padding(3);
+            this.label2.Location = new System.Drawing.Point(8, 71);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 23);
             this.label2.TabIndex = 3;
@@ -214,7 +222,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.pictureBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 131);
+            this.groupBox2.Location = new System.Drawing.Point(12, 207);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(332, 208);
             this.groupBox2.TabIndex = 5;
@@ -223,6 +231,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ffmpegSelectBtn);
+            this.groupBox1.Controls.Add(this.ffmpegSelectTextbox);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.optBtn);
             this.groupBox1.Controls.Add(this.outputDirTextbox);
             this.groupBox1.Controls.Add(this.label2);
@@ -232,16 +243,50 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 10, 5, 10);
-            this.groupBox1.Size = new System.Drawing.Size(776, 113);
+            this.groupBox1.Size = new System.Drawing.Size(776, 155);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "YUV File Path";
+            // 
+            // ffmpegSelectBtn
+            // 
+            this.ffmpegSelectBtn.Location = new System.Drawing.Point(737, 114);
+            this.ffmpegSelectBtn.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.ffmpegSelectBtn.Name = "ffmpegSelectBtn";
+            this.ffmpegSelectBtn.Size = new System.Drawing.Size(31, 23);
+            this.ffmpegSelectBtn.TabIndex = 8;
+            this.ffmpegSelectBtn.Text = "...";
+            this.ffmpegSelectBtn.UseVisualStyleBackColor = true;
+            this.ffmpegSelectBtn.Click += new System.EventHandler(this.FFmpegSelectBtn_Click);
+            // 
+            // ffmpegSelectTextbox
+            // 
+            this.ffmpegSelectTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ffmpegSelectTextbox.Cursor = System.Windows.Forms.Cursors.No;
+            this.ffmpegSelectTextbox.Enabled = false;
+            this.ffmpegSelectTextbox.Location = new System.Drawing.Point(129, 113);
+            this.ffmpegSelectTextbox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.ffmpegSelectTextbox.Name = "ffmpegSelectTextbox";
+            this.ffmpegSelectTextbox.ReadOnly = true;
+            this.ffmpegSelectTextbox.Size = new System.Drawing.Size(602, 23);
+            this.ffmpegSelectTextbox.TabIndex = 7;
+            this.ffmpegSelectTextbox.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(8, 114);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 23);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Select ffmpeg.exe";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UYUV422toPNG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 353);
+            this.ClientSize = new System.Drawing.Size(800, 427);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -276,5 +321,8 @@
         private Label label2;
         private GroupBox groupBox2;
         private GroupBox groupBox1;
+        private Button ffmpegSelectBtn;
+        private TextBox ffmpegSelectTextbox;
+        private Label label5;
     }
 }

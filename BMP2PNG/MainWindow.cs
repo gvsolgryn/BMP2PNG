@@ -15,8 +15,6 @@ namespace BMP2PNG
         private string[] BmpArray = { };
         private List<string> FileNameList = new List<string>();
 
-        Thread t1;
-
         private void ScrBtn_Click(object sender, EventArgs e)
         {
             var folderDialog = new FolderBrowserDialog();
@@ -57,7 +55,7 @@ namespace BMP2PNG
 
         private void ConvertBtn_Click(object sender, EventArgs e)
         {
-            t1 = new Thread(new ThreadStart(ConvertBmp2Png));
+            var t1 = new Thread(new ThreadStart(ConvertBmp2Png));
             t1.Start();
         }
 
@@ -107,11 +105,19 @@ namespace BMP2PNG
                     bmp.Save(OptPath + "\\" + FileNameList[index].Replace("bmp", "png"), ImageFormat.Png);
                 }
 
+                index++;
+
+                LogAppend($"{index}번째 파일 변환 완료\n");
+
                 Thread.Sleep(100);
 
-                LogAppend($"{index + 1}번째 파일 변환 완료\n");
-
-                index++;
+                if (progressBar.InvokeRequired)
+                {
+                    Invoke((MethodInvoker)delegate ()
+                    {
+                        progressBar.PerformStep();
+                    });
+                }
 
                 if (fileCountLabelLeft.InvokeRequired)
                 {
@@ -123,14 +129,6 @@ namespace BMP2PNG
                 else
                 {
                     fileCountLabelLeft.Text = index.ToString();
-                }
-
-                if (progressBar.InvokeRequired)
-                {
-                    Invoke((MethodInvoker)delegate ()
-                    {
-                        progressBar.PerformStep();
-                    });
                 }
             }
         }
