@@ -1,4 +1,5 @@
 # BMP2PNG
+내가 쓰려고 만든 프로그램
 
 # Prerequisites
 ## .net 6 runtime program required
